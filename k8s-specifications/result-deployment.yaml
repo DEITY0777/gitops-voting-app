@@ -15,7 +15,7 @@ spec:
         app: result
     spec:
       containers:
-      - image: rohitsunka/result-app:31
+      - image: rohitsunka/result-app:32
         name: result
         ports:
         - containerPort: 80
