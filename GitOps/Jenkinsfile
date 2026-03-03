@@ -1,0 +1,47 @@
+@Library('Shared') _
+
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'DOCKER_IMAGE', defaultValue: '', description: 'Docker Image Name')
+        string(name: 'IMAGE_TAG', defaultValue: '', description: 'Docker Image Tag')
+    }
+
+    stages {
+
+        stage('Workspace Cleanup') {
+            steps {
+                cleanWs()
+            }
+        }
+
+        stage('Checkout Repo') {
+            steps {
+                code_checkout(
+                    "git@github.com:DEITY0777/DEITY0777-K8S-Gitops-Deployment-on-AWS-EC2-using-Argo-CD.git",
+                    "main"
+                )
+            }
+        }
+
+        stage('Update Result Manifest') {
+            steps {
+                update_manifest(
+                    "k8s-specifications/result-deployment.yaml",
+                    params.DOCKER_IMAGE,
+                    params.IMAGE_TAG
+                )
+            }
+        }
+
+        stage('Commit & Push') {
+            steps {
+                git_push(
+                    "main",
+                    "Update result image to ${params.IMAGE_TAG}"
+                )
+            }
+        }
+    }
+}
