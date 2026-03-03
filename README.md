@@ -1,6 +1,6 @@
 # Voting App CI/CD(Jenkins + K8S + ArgoCD)
 
-A complete step-wise guide for setting up a Kubernetes cluster using Kind on an AWS EC2 instance, installing and configuring Argo CD, and deploying auto-scalable(HPA) application using Argo CD.
+A complete end-to-end DevOps implementation demonstrating Kubernetes cluster setup using Kind on AWS EC2, GitOps-based deployment with Argo CD, automated CI/CD pipelines using Jenkins, container image security scanning with Trivy, and deployment of an auto-scalable (HPA-enabled) application with full observability using Prometheus and Grafana.
 
 
 * A front-end web app in [Python](/vote) which lets you vote between two options
