@@ -19,7 +19,7 @@ pipeline {
         stage('Checkout Repo') {
             steps {
                 code_checkout(
-                    "git@github.com:DEITY0777/DEITY0777-K8S-Gitops-Deployment-on-AWS-EC2-using-Argo-CD.git",
+                    "git@github.com:DEITY0777/gitops-voting-app.git",
                     "main"
                 )
             }
@@ -45,3 +45,4 @@ pipeline {
         }
     }
 }
+
